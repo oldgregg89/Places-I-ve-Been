@@ -7,7 +7,7 @@ function PlacesIveBeenBook() {
 PlacesIveBeenBook.prototype.addPlace = function (place) {
   place.id = this.assignId();
   this.placesInBook.push(place);
-  console.log(placesIveBeenBook)
+  console.log(placesIveBeenBook, place.id)
 }
 
 PlacesIveBeenBook.prototype.assignId = function () {
@@ -37,7 +37,7 @@ PlacesIveBeenBook.prototype.deletePlace = function(id) {
 }
 
 // Business Logic for Place
-function Places(cityName, landmark, date, notes) {
+function Places (cityName, landmark, date, notes) {
   this.cityName = cityName;
   this.landmark = landmark;
   this.date = date;
@@ -53,14 +53,36 @@ let placesIveBeenBook = new PlacesIveBeenBook ();
 
 function displayPlacesDetail(placesIveBeenBookToDisplay) {
   let placesList = ($("ul#places"));
-  let htmlForPlacesInfo = ""
+  let htmlForPlacesInfo = "";
   placesIveBeenBookToDisplay.places.forEach(function(place) {
     htmlForPlacesInfo += "<li id=" + places.id + ">" + places.cityName + "<li>"
+    console.log(placesList)
   });
-placesList.html(htmlForPlacesInfo)
+
+  placesList.html(htmlForPlacesInfo)
 }
 
+function showPlaces(placeId) {
+let place = placesIveBeenBook.findPlace(placeId)
+$("#show-contact").show();
+  $(".first-name").html(place.firstName);
+  $(".last-name").html(place.lastName);
+  $(".phone-number").html(place.phoneNumber);
+  let buttons = $("#buttons");
+  buttons.empty();
+  buttons.append("<button class='deleteButton' id=" +  + contact.id + ">Delete</button>");
+}
 
+function attachPlacesListeners() {
+  $("ul#places").on("click", "li", function() {
+    showContact(this.id);
+  });
+  $("#buttons").on("click", ".deleteButton", function() {
+    addressBook.deleteContact(this.id);
+    $("#show-places").hide();
+    displayContactDetails(addressBook);
+  });
+};
 
 $(document).ready(function() {
   $('form#new-place').submit(function(event) {
