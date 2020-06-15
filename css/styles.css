@@ -3,3 +3,13 @@ img {
   height: 600px;
   float: center;
 }
+
+form {
+  column-count: 1;
+  columns: center;
+  
+}
+
+label {
+  padding: 15px;
+}
