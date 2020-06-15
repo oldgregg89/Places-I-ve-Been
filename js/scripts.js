@@ -81,7 +81,7 @@ function attachPlacesListeners() {
 };
 
 $(document).ready(function() {
-  attachPlacesListeners()
+  attachPlacesListeners();
   $('form#new-place').submit(function(event) {
     event.preventDefault();
     const inputtedPlace = $("input#new-place").val();
