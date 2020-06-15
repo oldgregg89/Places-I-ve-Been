@@ -15,7 +15,7 @@ PlacesIveBeenBook.prototype.assignId = function () {
 }
 
 PlacesIveBeenBook.prototype.findPlace = function(id) {
-  for (let i = 0; i < this.places.length; i++) {
+  for (let i = 0; i < this.places.length-1; i++) {
     if (this.places[i].id == id) {
       return this.places[i];
     }
@@ -24,7 +24,7 @@ PlacesIveBeenBook.prototype.findPlace = function(id) {
 }
 
 PlacesIveBeenBook.prototype.deletePlace = function(id) {
-  for (let i=0; i < this.places.length; i++) {
+  for (let i=0; i < this.places.length-1; i++) {
     if (this.places[i]) {
       if (this.places[i].id == id) {
         delete this.places;
@@ -53,7 +53,7 @@ function displayPlacesDetail(placesIveBeenBookToDisplay) {
   let placesList = ($("ul#places"));
   let htmlForPlacesInfo = "";
   placesIveBeenBookToDisplay.places.forEach(function(place) {
-    htmlForPlacesInfo += "<li id=" + place.id + ">" + place.cityName + "<li>";
+    htmlForPlacesInfo += "<li id=" + place.id + ">" + place.cityName + "</li>";
   });
   placesList.html(htmlForPlacesInfo)
 }
