@@ -1,13 +1,12 @@
 //business Logic for places I've been
 function PlacesIveBeenBook() {
-  this.placesInBook = []
+  this.places = []
   this.currentId = 0
 }
 
 PlacesIveBeenBook.prototype.addPlace = function (place) {
   place.id = this.assignId();
-  this.placesInBook.push(place);
-  console.log(placesIveBeenBook, place.id)
+  this.places.push(place);
 }
 
 PlacesIveBeenBook.prototype.assignId = function () {
@@ -42,7 +41,6 @@ function Places (cityName, landmark, date, notes) {
   this.landmark = landmark;
   this.date = date;
   this.notes = notes;
-  console.log(cityName, landmark)
 }
 Places.prototype.placeName = function() {
   return this.cityName;
@@ -56,7 +54,6 @@ function displayPlacesDetail(placesIveBeenBookToDisplay) {
   let htmlForPlacesInfo = "";
   placesIveBeenBookToDisplay.places.forEach(function(place) {
     htmlForPlacesInfo += "<li id=" + places.id + ">" + places.cityName + "<li>"
-    console.log(placesList)
   });
 
   placesList.html(htmlForPlacesInfo)
@@ -65,9 +62,9 @@ function displayPlacesDetail(placesIveBeenBookToDisplay) {
 function showPlaces(placeId) {
 let place = placesIveBeenBook.findPlace(placeId)
 $("#show-contact").show();
-  $(".first-name").html(place.firstName);
-  $(".last-name").html(place.lastName);
-  $(".phone-number").html(place.phoneNumber);
+  $(".landmark").html(place.landmark);
+  $(".date").html(place.date);
+  $(".notes").html(place.notes);
   let buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" +  + contact.id + ">Delete</button>");
@@ -78,28 +75,27 @@ function attachPlacesListeners() {
     showContact(this.id);
   });
   $("#buttons").on("click", ".deleteButton", function() {
-    addressBook.deleteContact(this.id);
+    placesIveBeenBook.deletePlace(this.id);
     $("#show-places").hide();
-    displayContactDetails(addressBook);
+    displayContactDetails(placesIveBeenBook);
   });
 };
 
 $(document).ready(function() {
   $('form#new-place').submit(function(event) {
-  event.preventDefault();
-  const inputtedPlace = $("input#new-place").val();
-  const inputtedLandmark = $("input#new-landmark").val();
-  const inputtedDate = $("input#new-date").val();
-  const inputtedNotes = $("input#new-notes").val();
-
-  $("input#new-landmark").val('');
-  $("input#new-date").val('');
-  $("input#new-notes").val('');
-
-  console.log(inputtedLandmark)
-  let newPlace = new Places(inputtedPlace, inputtedLandmark, inputtedDate, inputtedNotes)
-  placesIveBeenBook.addPlace(newPlace)
-  displayPlacesDetail(placesIveBeenBook)
-  console.log(placesIveBeenBook.placesInBook)
+    event.preventDefault();
+    const inputtedPlace = $("input#new-place").val();
+    const inputtedLandmark = $("input#new-landmark").val();
+    const inputtedDate = $("input#new-date").val();
+    const inputtedNotes = $("input#new-notes").val();
+    debugger
+    $("input#new-landmark").val('');
+    $("input#new-date").val('');
+    $("input#new-notes").val('');
+    let newPlace = new Places(inputtedPlace, inputtedLandmark, inputtedDate, inputtedNotes)
+    debugger
+    placesIveBeenBook.addPlace(newPlace)
+    debugger
+    displayPlacesDetail(placesIveBeenBook)
   });
 });
