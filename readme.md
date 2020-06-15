@@ -1,14 +1,14 @@
-# _Template_
+# _Places I've Been_
 
-#### _{Brief description of application}, 2020 ver 1.0_
+#### _A simple way way of keeping track of places visited with greater detail._, 2020 ver 1.0_
 
-#### By _Ian Gregg & (Co author)_
-[Template-for-new-code](https://github.com/oldgregg89/Template-for-new-code)
+#### By _Ian Gregg & Sean Downs_
+[Places-I've-Been](https://github.com/oldgregg89/Places-I-ve-Been)
 
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+_This software creates a documentation of places We've been and allows the user to input new places. It will include the place & properties associated with that place._
 
 ## Setup/Installation Requirements
 
@@ -23,11 +23,22 @@ _{Leave nothing to chance! You want it to be easy for potential users, employers
 
 _No known bugs_
 
+## Specs
+
+| Behavior    | Input | Output |
+| :---------- | ----- | -----: |
+| Name of place | Black Lake | Black Lake |
+| Land Marks  | Columbus Park | Columbus Park |
+| Date  | 6/22/2020 | 6/22/2020 |
+| Notes | 'It was fun'  | 'It was fun'  |
+| Task Indicator | 'Done' | 'Done' |
+
+
 ## Support and contact details
 
 _Contact Ian Gregg: <iangregg188@gmail.com>
 or
-(co author)_
+Sean Downs <spdowns@protonmail.com>_
 
 ## Technologies Used
 
@@ -35,7 +46,7 @@ _The Technologies used in the making of this software was Chrome browser, Visual
 
 ### License
 
-Copyright (c) 2020 **_Ian Gregg & (Co author)_**
+Copyright (c) 2020 **_Ian Gregg & Sean Downs_**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
