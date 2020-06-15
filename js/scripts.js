@@ -15,7 +15,7 @@ PlacesIveBeenBook.prototype.assignId = function () {
 }
 
 PlacesIveBeenBook.prototype.findPlace = function(id) {
-  for (let = 0; i < this.places.length ; i++) {
+  for (let i = 0; i < this.places.length ; i++) {
     if (this.places[i].id == id) {
       return this.places[i];
     }
@@ -53,21 +53,20 @@ function displayPlacesDetail(placesIveBeenBookToDisplay) {
   let placesList = ($("ul#places"));
   let htmlForPlacesInfo = "";
   placesIveBeenBookToDisplay.places.forEach(function(place) {
-    htmlForPlacesInfo += "<li id=" + places.id + ">" + places.cityName + "<li>"
+    htmlForPlacesInfo += "<li id=" + place.id + ">" + place.cityName + "<li>"
   });
-
   placesList.html(htmlForPlacesInfo)
 }
 
 function showPlaces(placeId) {
 let place = placesIveBeenBook.findPlace(placeId)
-$("#show-contact").show();
+$("#show-places").show();
   $(".landmark").html(place.landmark);
   $(".date").html(place.date);
   $(".notes").html(place.notes);
   let buttons = $("#buttons");
   buttons.empty();
-  buttons.append("<button class='deleteButton' id=" +  + contact.id + ">Delete</button>");
+  buttons.append("<button class='deleteButton' id=" + contact.id + ">Delete</button>");
 }
 
 function attachPlacesListeners() {
@@ -88,14 +87,13 @@ $(document).ready(function() {
     const inputtedLandmark = $("input#new-landmark").val();
     const inputtedDate = $("input#new-date").val();
     const inputtedNotes = $("input#new-notes").val();
-    debugger
+    $("input#new-place").val('')
     $("input#new-landmark").val('');
     $("input#new-date").val('');
     $("input#new-notes").val('');
     let newPlace = new Places(inputtedPlace, inputtedLandmark, inputtedDate, inputtedNotes)
-    debugger
     placesIveBeenBook.addPlace(newPlace)
-    debugger
     displayPlacesDetail(placesIveBeenBook)
+
   });
 });

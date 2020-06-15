@@ -15,18 +15,22 @@
     </div>
     <div class="boxed">
       <form id="new-place">
-        <Label for = "new-place">Place</Label>
-        <input type= "text" id= "new-place">
-        <br>
-        <label for="new-landmark">Landmark</label>
-        <input type= "text" id= "new-landmark">
-        <br>
-        <label for="new-date">Date</label>
-        <input type="date" id="new-date">
-        <br>
-        <label for="new-notes">Notes</label>
-        <input type="text" id="new-notes">
-        <br>
+        <div class="form-group">
+          <Label for = "new-place">Place</Label>
+          <input type= "text" id= "new-place">
+        </div>
+        <div class="form-group">
+          <label for="new-landmark">Landmark</label>
+          <input type= "text" id= "new-landmark">
+        </div>
+        <div class="form-group">
+          <label for="new-date">Date</label>
+          <input type="date" id="new-date">
+        </div>
+        <div class="form-group">
+          <label for="new-notes">Notes</label>
+          <input type="text" id="new-notes">
+        </div>
         <button type="submit">Press me!</button>
       </form>
       <h2>Places</h2>
@@ -36,7 +40,7 @@
         <p>Landmark: <span class="landmark"></span></p>
         <p>Date: <span class="date"></span></p>
         <p>Notes: <span class="notes"></span></p>
-        <div class="buttons">
+        <div id="buttons">
         </div>
       </div>
 
