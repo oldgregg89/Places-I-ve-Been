@@ -1,20 +1,22 @@
 //business Logic for places I've been
 function PlacesIveBeenBook() {
-  this.places = []
+  this.placesInBook = []
   this.currentId = 0
 }
 
 PlacesIveBeenBook.prototype.addPlace = function (place) {
-  this.places.push(place);
+  place.id = this.assignId();
+  this.placesInBook.push(place);
+  console.log(placesIveBeenBook)
 }
 
 PlacesIveBeenBook.prototype.assignId = function () {
-  place.id = this.assignId();
-  return this.ccurrentId
+  this.currentId += 1;
+  return this.currentId
 }
 
-PlacesIveBeenBook.prototype.findplace = function(id) {
-  for (let = 0; i < this.places.length; i++){
+PlacesIveBeenBook.prototype.findPlace = function(id) {
+  for (let = 0; i < this.places.length ; i++) {
     if (this.places[i].id == id) {
       return this.places[i];
     }
@@ -35,11 +37,12 @@ PlacesIveBeenBook.prototype.deletePlace = function(id) {
 }
 
 // Business Logic for Place
-function Places(cityName, landMark, date, notes) {
+function Places(cityName, landmark, date, notes) {
   this.cityName = cityName;
-  this.landMark = landMark;
+  this.landmark = landmark;
   this.date = date;
   this.notes = notes;
+  console.log(cityName, landmark)
 }
 Places.prototype.placeName = function() {
   return this.cityName;
@@ -48,15 +51,33 @@ Places.prototype.placeName = function() {
 //User Interface logic
 let placesIveBeenBook = new PlacesIveBeenBook ();
 
+function displayPlacesDetail(placesIveBeenBookToDisplay) {
+  let placesList = ($("ul#places"));
+  let htmlForPlacesInfo = ""
+  placesIveBeenBookToDisplay.places.forEach(function(place) {
+    htmlForPlacesInfo += "<li id=" + places.id + ">" + places.cityName + "<li>"
+  });
+placesList.html(htmlForPlacesInfo)
+}
+
+
+
 $(document).ready(function() {
   $('form#new-place').submit(function(event) {
   event.preventDefault();
-  const inputtedplace = $("input#new-place").val();
-  const inputtedLandMark = $("input#new-landmark").val();
+  const inputtedPlace = $("input#new-place").val();
+  const inputtedLandmark = $("input#new-landmark").val();
   const inputtedDate = $("input#new-date").val();
   const inputtedNotes = $("input#new-notes").val();
-  let newPlace = new Places(inputtedLandMark. inputtedDate, inputtedNotes)
+
+  $("input#new-landmark").val('');
+  $("input#new-date").val('');
+  $("input#new-notes").val('');
+
+  console.log(inputtedLandmark)
+  let newPlace = new Places(inputtedPlace, inputtedLandmark, inputtedDate, inputtedNotes)
   placesIveBeenBook.addPlace(newPlace)
-  console.log(placesIveBeenBook.places)
+  displayPlacesDetail(placesIveBeenBook)
+  console.log(placesIveBeenBook.placesInBook)
   });
 });
