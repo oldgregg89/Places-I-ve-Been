@@ -47,7 +47,7 @@ Places.prototype.placeName = function() {
 }
 
 //User Interface logic
-let placesIveBeenBook = new PlacesIveBeenBook ();
+let placesIveBeenBook = new PlacesIveBeenBook();
 
 function displayPlacesDetail(placesIveBeenBookToDisplay) {
   let placesList = ($("ul#places"));
@@ -60,27 +60,28 @@ function displayPlacesDetail(placesIveBeenBookToDisplay) {
 
 function showPlaces(placeId) {
 let place = placesIveBeenBook.findPlace(placeId)
-$("#show-places").show();
+  $("#show-places").show();
   $(".landmark").html(place.landmark);
   $(".date").html(place.date);
   $(".notes").html(place.notes);
   let buttons = $("#buttons");
   buttons.empty();
-  buttons.append("<button class='deleteButton' id=" + contact.id + ">Delete</button>");
+  buttons.append("<button class='deleteButton' id=" + place.id + ">Delete</button>");
 }
 
 function attachPlacesListeners() {
   $("ul#places").on("click", "li", function() {
-    showContact(this.id);
+    showPlaces(this.id);
   });
   $("#buttons").on("click", ".deleteButton", function() {
     placesIveBeenBook.deletePlace(this.id);
     $("#show-places").hide();
-    displayContactDetails(placesIveBeenBook);
+    displayPlacesDetail(placesIveBeenBook);
   });
 };
 
 $(document).ready(function() {
+  attachPlacesListeners()
   $('form#new-place').submit(function(event) {
     event.preventDefault();
     const inputtedPlace = $("input#new-place").val();
@@ -94,6 +95,5 @@ $(document).ready(function() {
     let newPlace = new Places(inputtedPlace, inputtedLandmark, inputtedDate, inputtedNotes)
     placesIveBeenBook.addPlace(newPlace)
     displayPlacesDetail(placesIveBeenBook)
-
   });
 });
